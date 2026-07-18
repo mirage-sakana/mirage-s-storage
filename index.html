@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>mirage's storage</title>
+<style>
+  body { margin: 20px; font-family: sans-serif; }
+  .gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+  .gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery" id="gallery"></div>
+
+<script>
+  fetch("images.json")
+    .then(res => res.json())
+    .then(images => {
+      const gallery = document.getElementById("gallery");
+      images.forEach(name => {
+        const img = document.createElement("img");
+        img.src = "img/" + name;
+        img.alt = name;
+        gallery.appendChild(img);
+      });
+    })
+    .catch(err => {
+      console.error("画像リストの読み込みに失敗しました:", err);
+    });
+</script>
+
+</body>
+</html>
