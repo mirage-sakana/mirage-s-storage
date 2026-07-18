@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <title>mirage's storage</title>
 <style>
-  body { margin: 20px; font-family: sans-serif; }
-  .gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+  body {
+    margin: 20px;
+    font-family: sans-serif;
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
   .gallery img {
     width: 200px;
     height: 200px;
@@ -20,20 +27,20 @@
 <div class="gallery" id="gallery"></div>
 
 <script>
-  fetch("images.json")
-    .then(res => res.json())
-    .then(images => {
-      const gallery = document.getElementById("gallery");
-      images.forEach(name => {
-        const img = document.createElement("img");
-        img.src = "img/" + name;
-        img.alt = name;
-        gallery.appendChild(img);
-      });
-    })
-    .catch(err => {
-      console.error("画像リストの読み込みに失敗しました:", err);
-    });
+  // img フォルダ内のファイル名をここに書く
+  const images = [
+    "image.png",
+    "image2.png",
+    "image3.png"
+  ];
+
+  const gallery = document.getElementById("gallery");
+  images.forEach(name => {
+    const img = document.createElement("img");
+    img.src = "img/" + name;
+    img.alt = name;
+    gallery.appendChild(img);
+  });
 </script>
 
 </body>
